@@ -6,6 +6,10 @@ This repository is a simple implementation of Depth Anything V2 with ONNX and Te
 
 ## Installation
 ```bash
+git clone https://github.com/DepthAnything/Depth-Anything-V2
+```
+
+```bash
 pip install -r requirements.txt
 ```
 
