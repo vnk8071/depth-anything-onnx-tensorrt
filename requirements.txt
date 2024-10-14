@@ -12,6 +12,7 @@ flake8==7.1.1
 flatbuffers==24.3.25
 fonttools==4.54.1
 future==1.0.0
+gradio==4.44.1
 humanfriendly==10.0
 identify==2.6.1
 idna==3.10

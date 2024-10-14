@@ -84,7 +84,7 @@ class EngineBuilder:
             identity_out_tensor = self.network.add_identity(tensor).get_output(0)
             identity_out_tensor.name = "identity_{}".format(tensor.name)
             self.network.mark_output(tensor=identity_out_tensor)
-            
+
     def create_engine(self):
         config = self.builder.create_builder_config()
         config.max_workspace_size = self.max_workspace_size * (1 << 25)

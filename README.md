@@ -43,15 +43,21 @@ Or you can download the converted model from [Google Drive](https://drive.google
 
 ## Usage
 ```python
-python infer.py --input-path assets/demo01.jpg --input-type image --mode onnx \
-    --encoder vits --model_path models/depth_anything_v2_vits.onnx
+python infer.py 
+  --input-path assets/demo01.jpg --input-type image \
+  --mode onnx --encoder vits \
+  --model_path models/depth_anything_v2_vits.onnx
 ```
 
 ![output](assets/result_demo01.jpg)
 
 Focus on a region with crop region:
 ```python
-python infer.py --input-path assets/demo01.jpg --input-type image --mode onnx     --encoder vits --model_path depth_anything_v2_vits.onnx --crop-region "0 550 800 750"
+python infer.py 
+  --input-path assets/demo01.jpg --input-type image \
+  --mode onnx --encoder vits \ 
+  --model_path depth_anything_v2_vits.onnx \
+  --crop-region "0 550 800 750"
 ```
 
 ![output](assets/result_demo01_crop.jpg)
@@ -66,8 +72,22 @@ Options:
 - `--output-path`: path to output image
 - `--grayscale`: output grayscale image
 
+## User Interface
+```python
+python app.py
+```
+
+URL: `http://127.0.0.1:8000`
+
+- Preview crop zone
+![crop_zone](assets/crop_zone.png)
+
+- UI with crop zone and the output depth map
+![ui](assets/ui.png)
+
 ## TODO
-- [ ] Add UI for easy usage with crop region
+
+- [x] Add UI for easy usage with crop region
 - [ ] Add motion blur detection
 - [ ] Add depth map visualization when moving crop region
 
