@@ -1,0 +1,28 @@
+name: "depth_anything"
+platform: "tensorrt_plan"
+default_model_filename: "model.plan"
+max_batch_size : 0
+input [
+  {
+    name: "input"
+    data_type: TYPE_FP32
+    dims: [ 1, 3, 518, 518 ]
+  }
+]
+output [
+  {
+    name: "output"
+    data_type: TYPE_FP32
+    dims: [ 1, 518, 518 ]
+  }
+]
+version_policy: { all { } }
+dynamic_batching { }
+instance_group [ { count: 2 }]
+optimization { execution_accelerators {
+  gpu_execution_accelerator : [ {
+    name : "tensorrt"
+    parameters { key: "precision_mode" value: "FP16" }
+    parameters { key: "max_workspace_size_bytes" value: "1073741824" }
+    }]
+}}
