@@ -41,6 +41,7 @@ class DepthAnythingTriton:
                 image = cv2.resize(image, (self.input_w, self.input_h), interpolation=cv2.INTER_CUBIC)
                 image = (image - [0.485, 0.456, 0.406]) / [0.229, 0.224, 0.225]
                 image = image.transpose(2, 0, 1).astype("float32")
+                image = np.expand_dims(image, axis=0)
                 inps = [grpcclient.InferInput(self.input_metadata.name, self.input_metadata.shape, self.input_metadata.datatype)]
             inps[0].set_data_from_numpy(image)
             outputs_names = [self.output_name]
@@ -53,6 +54,7 @@ class DepthAnythingTriton:
                 image = cv2.resize(image, (self.input_w, self.input_h), interpolation=cv2.INTER_CUBIC)
                 image = (image - [0.485, 0.456, 0.406]) / [0.229, 0.224, 0.225]
                 image = image.transpose(2, 0, 1).astype("float32")
+                image = np.expand_dims(image, axis=0)
                 inps = [httpclient.InferInput(self.input_metadata["name"], self.input_metadata["shape"], self.input_metadata["datatype"])]
             inps[0].set_data_from_numpy(image)
             outputs_names = [self.output_name]
@@ -129,6 +131,7 @@ class DepthAnythingTriton:
 
         cap.release()
         out.release()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Depth Anything Inference")

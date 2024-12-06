@@ -126,10 +126,18 @@ output [
 
 ### Build and run the Triton Inference Server container
 
+- Edge devices with NVIDIA GPU
+
 ```bash
 sudo docker build -t tritonserver:v1 .
 sudo docker run --runtime=nvidia --gpus all -p 8000:8000 -p 8001:8001 -p 8002:8002
 -v /home/nx-int/code/Depth-Anythingv2-TensorRT-python/model_repository:/models tritonserver:v1
+```
+
+- Server with NVIDIA GPU
+
+```bash
+sudo docker compose up --build
 ```
 
 ![deploy_triton](assets/deploy_triton.png)
